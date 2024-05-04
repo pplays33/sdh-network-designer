@@ -6,29 +6,20 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
+          Проектирование внутризоновой сети SDH
         </p>
         <div>
           <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+            href="https://github.com/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
+            Исходный код{" "}
           </a>
         </div>
       </div>
 
-      <div className={styles.center}>
+{/*       <div className={styles.center}>
         <Image
           className={styles.logo}
           src="/next.svg"
@@ -37,7 +28,7 @@ export default function Home() {
           height={37}
           priority
         />
-      </div>
+      </div> */}
 
       <div className={styles.grid}>
         <a
@@ -47,9 +38,9 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2>
-            Docs <span>-&gt;</span>
+            Параметры расчета <span>-&gt;</span>
           </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
+          <p>Ввода параметров населенных пунктов и расчётных показателей сети</p>
         </a>
 
         <a
@@ -59,9 +50,9 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2>
-            Learn <span>-&gt;</span>
+            Параметры кабеля <span>-&gt;</span>
           </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
+          <p>Форма для ввода параметров кабеля.</p>
         </a>
 
         <a
@@ -71,9 +62,9 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2>
-            Templates <span>-&gt;</span>
+            Кол-во абонентов <span>-&gt;</span>
           </h2>
-          <p>Explore starter templates for Next.js.</p>
+          <p>Численность населения» и «Расстояние»</p>
         </a>
 
         <a
@@ -83,10 +74,10 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2>
-            Deploy <span>-&gt;</span>
+            Населенные пункты <span>-&gt;</span>
           </h2>
           <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+            Выбор кол-ва населенных пунктов 
           </p>
         </a>
       </div>

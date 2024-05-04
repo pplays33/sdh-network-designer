@@ -1,0 +1,104 @@
+/* NetworkForm.module.css */
+
+
+
+.formContainer {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.3);
+    background-color: white;
+  }
+  
+  .formTitle {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333333;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 10px;
+    color: #666666;
+  }
+  
+  .select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .inputRow {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+  }
+  
+  .input {
+    width: calc(100% - 100px);
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .buttonRow {
+    text-align: right;
+  }
+  
+  .button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    background-color: #0062cc;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .button:hover {
+    background-color: #0044a8;
+  }
+  
+  .smallButton {
+    padding: 5px 10px;
+    margin-left: auto;
+    background-color: #dc3545;
+    text-transform: none;
+  }
+  
+  .smallButton:hover {
+    background-color: #c82333;
+  }
+  
+  /* Мобильный вид */
+  @media (max-width: 768px) {
+    .formContainer {
+      width: 90%;
+      margin: 20px auto;
+      padding: 10px;
+    }
+  
+    .inputRow {
+      display: block;
+    }
+  
+    .input {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
+    .buttonRow {
+      text-align: center;
+    }
+  }
