@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 
+
 export default function Home() {
   return (
     <main className={styles.main}>
@@ -19,16 +20,16 @@ export default function Home() {
         </div>
       </div>
 
-{/*       <div className={styles.center}>
-        <Image
+      <div className={styles.center}>
+{/*         <Image
           className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
+          src="/ill.png"
+          alt="illustration SDH"
+          width={280}
+          height={137}
           priority
-        />
-      </div> */}
+        /> */}
+      </div>
 
       <div className={styles.grid}>
         <a
@@ -78,6 +79,34 @@ export default function Home() {
           </h2>
           <p>
             Выбор кол-ва населенных пунктов 
+          </p>
+        </a>
+
+        <a
+          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          className={styles.card}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2>
+            Схема <span>-&gt;</span>
+          </h2>
+          <p>
+            Схема проектируемой сети
+          </p>
+        </a>
+
+        <a
+          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+          className={styles.card}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <h2>
+            Результаты <span>-&gt;</span>
+          </h2>
+          <p>
+            Результаты расчета
           </p>
         </a>
       </div>
