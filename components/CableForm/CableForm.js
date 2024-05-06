@@ -1,9 +1,13 @@
 'use client'
-import styles from './CableForm.module.css';
 
 import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { cableState } from '../../State/store';
+
+import styles from './CableForm.module.css';
 
 const CableForm = ({ onSubmit }) => {
+  const [globalCableState, setGlobalCableState] = useRecoilState(cableState);
   const [cableType, setCableType] = useState('');
   const [attenuation, setAttenuation] = useState('');
   const [cableLength, setCableLength] = useState('');
@@ -14,6 +18,15 @@ const CableForm = ({ onSubmit }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    setGlobalCableState({
+      cableType,
+      attenuation,
+      cableLength,
+      spliceLoss,
+      connectorLoss,
+      amplifierGain,
+      regenLength
+    });
     onSubmit({
       cableType,
       attenuation,

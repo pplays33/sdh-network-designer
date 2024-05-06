@@ -1,9 +1,12 @@
 'use client'
 
 import { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { calcState } from '../../State/store';
 import styles from './CalculationForm.module.css';
 
-const CalculationForm = () => {
+const CalculationForm = ({ onSubmit }) => {
+    const [calcGlobState, setCalcGlobState] = useRecoilState(calcState);
     const [phonePer100, setPhonePer100] = useState('');
     const [peakLoad, setPeakLoad] = useState('');
     const [internetLoad, setInternetLoad] = useState('');
@@ -11,7 +14,13 @@ const CalculationForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log({
+        setCalcGlobState({
+            phonePer100,
+            peakLoad,
+            internetLoad,
+            internetAccessRate
+        });
+        onSubmit({
             phonePer100,
             peakLoad,
             internetLoad,
