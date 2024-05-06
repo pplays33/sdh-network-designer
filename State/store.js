@@ -5,12 +5,12 @@ import { atom } from 'recoil';
 
 export const townCountState = atom({
   key: 'townCountState',
-  default: 3,
+  default: 20,
 });
 
 export const townsState = atom({
   key: 'townsState',
-  default: Array.from({ length: 3 }, () => ({ name: '', population: '', distance: '' })),
+  default: Array.from({ length: 20 }, () => ({ name: '', population: '', distance: '' })),
 });
 
 export const cableState = atom({

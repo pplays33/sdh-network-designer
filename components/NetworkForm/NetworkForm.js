@@ -9,7 +9,7 @@ import styles from './NetworkForm.module.css';
 
 const NetworkForm = ({ onSubmit }) => {
   const [townCount, setTownCount] = useRecoilState(townCountState);
-  const initialState = () => Array.from({ length: 3 }, () => ({ name: '', population: '', distance: '' }));
+  const initialState = () => Array.from({ length: 20 }, () => ({ name: '', population: '', distance: '' }));
   const [towns, setTowns] = useRecoilState(townsState);
 
   const handleTownCountChange = (event) => {
@@ -27,7 +27,7 @@ const NetworkForm = ({ onSubmit }) => {
 
 
   const handleAddTown = () => {
-    if(townCount < 15) {
+    if(townCount < 30) {
       setTownCount(townCount + 1);
       setTowns([...towns, { name: '', population: '', distance: '' }]);
     }
@@ -58,9 +58,9 @@ const NetworkForm = ({ onSubmit }) => {
           onChange={handleTownCountChange}
           className={styles.select}
         >
-          {[...Array(13).keys()].map((i) => (
-            <option key={i + 3} value={i + 3}>
-              {i + 3}
+          {[...Array(11).keys()].map((i) => (
+            <option key={i + 20} value={i + 20}>
+              {i + 20}
             </option>
           ))}
         </select>
@@ -97,7 +97,7 @@ const NetworkForm = ({ onSubmit }) => {
             className={styles.input}
           />
 
-          {index >= 3 && (
+          {index >= 20 && (
             <button
               type="button"
               onClick={() => handleRemoveTown(index)}
