@@ -35,3 +35,15 @@ export const calcState = atom({
     internetAccessRate: ''
   },
 });
+
+//result states
+
+export const LongDistanceStationLoadState = atom({
+  key: 'LongDistanceStationLoadState',
+  default: Array.from({ length: 20 }, () => ({ name: '', load: '' })),
+});
+
+export const TotalLoadFromSubscribersOfOneStationState = atom({
+  key: 'TotalLoadFromSubscribersOfOneStationState',
+  default: Array.from({ length: 20 }, () => ({ name: '', TotalLoadFromSub: '' })),
+});

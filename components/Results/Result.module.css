@@ -1,0 +1,40 @@
+/* Result.module.css */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+  }
+  
+  .column {
+    flex: 1;
+    min-width: calc(25% - 40px);
+    max-width: calc(25% - 40px);
+    margin: 20px;
+  }
+  
+  /* Адаптивность для маленьких экранов */
+  @media (max-width: 768px) {
+    .column {
+      min-width: 100%; /* Колонки растягиваются на всю ширину */
+      max-width: 100%;
+      margin: 10px 0; /* Уменьшите отступы для узких экранов */
+    }
+  }
+  
+  .header {
+    margin-bottom: 10px;
+  }
+  
+  .list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .listItem {
+    background-color: #212121;
+    border: 1px solid #030303;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+  }

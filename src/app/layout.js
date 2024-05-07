@@ -13,12 +13,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <RecoilRoot>
+    <RecoilRoot>
+      <html lang="en">
+        <body className={inter.className}>
           {children}
-        </RecoilRoot>
-      </body>
-    </html>
+        </body>
+      </html>
+    </RecoilRoot>
   );
 }

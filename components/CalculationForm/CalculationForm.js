@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { calcState } from '../../State/store';
+import { calcState } from '../../src/app/State/store';
 import styles from './CalculationForm.module.css';
 
 const CalculationForm = ({ onSubmit }) => {

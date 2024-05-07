@@ -1,16 +1,20 @@
 // NetworkForm.js
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { townCountState, townsState } from '../../State/store'
+import { townCountState, townsState } from '../../src/app/State/store'
 import styles from './NetworkForm.module.css';
-
 
 
 const NetworkForm = ({ onSubmit }) => {
   const [townCount, setTownCount] = useRecoilState(townCountState);
   const initialState = () => Array.from({ length: 20 }, () => ({ name: '', population: '', distance: '' }));
   const [towns, setTowns] = useRecoilState(townsState);
+
+  useEffect(() => {
+    localStorage.setItem('TownsState', JSON.stringify(towns));
+    console.log('Updated towns:', towns);
+  }, [towns]);
 
   const handleTownCountChange = (event) => {
     const newTownCount = parseInt(event.target.value, 10);
@@ -42,7 +46,7 @@ const NetworkForm = ({ onSubmit }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    onSubmit(towns);
+    //onSubmit(towns);
   };
 
   return (

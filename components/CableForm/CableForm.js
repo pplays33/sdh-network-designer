@@ -1,12 +1,13 @@
 'use client'
 
 import React, { useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { cableState } from '../../State/store';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { cableState, townsState } from '../../src/app/State/store';
 
 import styles from './CableForm.module.css';
 
 const CableForm = ({ onSubmit }) => {
+ /*  const towns = useRecoilValue(townsState); */
   const [globalCableState, setGlobalCableState] = useRecoilState(cableState);
   const [cableType, setCableType] = useState('');
   const [attenuation, setAttenuation] = useState('');
@@ -27,6 +28,7 @@ const CableForm = ({ onSubmit }) => {
       amplifierGain,
       regenLength
     });
+    console.log(towns);
     onSubmit({
       cableType,
       attenuation,
