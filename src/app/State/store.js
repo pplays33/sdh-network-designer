@@ -47,3 +47,8 @@ export const TotalLoadFromSubscribersOfOneStationState = atom({
   key: 'TotalLoadFromSubscribersOfOneStationState',
   default: Array.from({ length: 20 }, () => ({ name: '', TotalLoadFromSub: '' })),
 });
+
+export const StationCommunicationCoefficientState = atom({
+  key: 'StationCommunicationCoefficientState',
+  default: Array.from({ length: 20 }, () => ({ name: '', percent: '' })),
+});
