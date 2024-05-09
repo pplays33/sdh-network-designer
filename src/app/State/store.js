@@ -52,3 +52,14 @@ export const StationCommunicationCoefficientState = atom({
   key: 'StationCommunicationCoefficientState',
   default: Array.from({ length: 20 }, () => ({ name: '', percent: '' })),
 });
+
+export const InStationLoadResState = atom({
+  key: 'InStationLoadResState',
+  default: Array.from({ length: 20 }, () => ({ name: '', result: '' })),
+});
+
+// стор "Суммарная исходящая нагрузка от каждой станции" 
+export const TotalOutgoingLoadFromEachState = atom({
+  key: 'TotalOutgoingLoadFromEachState',
+  default: Array.from({ length: 20 }, () => ({ name: '', result: '' })),
+});

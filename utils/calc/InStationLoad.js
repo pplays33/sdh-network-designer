@@ -1,25 +1,30 @@
+const ranges = [
+    { min: 0.5, max: 0.7, result: 0.17 },
+    { min: 0.7, max: 1.3, result: 0.18 },
+    { min: 1.3, max: 1.5, result: 0.19 },
+    { min: 1.5, max: 5, result: 0.2 },
+    { min: 5, max: 6, result: 0.21},
+    { min: 5, max: 6, result: 0.21 },
+    { min: 6, max: 7, result: 0.22 },
+    { min: 7, max: 8, result: 0.25 },
+    { min: 8, max: 9, result: 0.26 },
+    { min: 9, max: 10, result: 0.27 },
+    { min: 10, max: 15, result: 0.3 },
+    { min: 15, max: 20, result: 0.38 },
+    { min: 20, max: 30, result: 0.43 },
+    { min: 30, max: 40, result: 0.5 },
+    { min: 40, max: 50, result: 0.55 },
+    { min: 50, max: 60, result: 0.65 },
+    { min: 60, max: 70, result: 0.74 },
+    { min: 70, max: 80, result: 0.82 },
+    { min: 80, max: 90, result: 0.85 },
+    { min: 90, max: 100, result: 0.94 },
+];
+
 const calculateResult = (value) => {
-    if (value >= 0.2 && value < 0.7) return 0.17;
-    if (value >= 0.7 && value < 1.3) return 0.18;
-    if (value >= 1.3 && value < 1.5) return 0.19;
-    if (value >= 1.5 && value < 5) return 0.2;
-    if (value >= 5 && value < 6) return 0.21;
-    if (value >= 6 && value < 7) return 0.22;
-    if (value >= 7 && value < 8) return 0.25;
-    if (value >= 8 && value < 9) return 0.26;
-    if (value >= 9 && value < 10) return 0.27;
-    if (value >= 10 && value < 15) return 0.3;
-    if (value >= 15 && value < 20) return 3.8;
-    if (value >= 20 && value < 30) return 0.43;
-    if (value >= 30 && value < 40) return 0.5;
-    if (value >= 40 && value < 50) return 0.55;
-    if (value >= 50 && value < 60) return 0.65;
-    if (value >= 60 && value < 70) return 0.74;
-    if (value >= 70 && value < 80) return 0.82;
-    if (value >= 80 && value < 90) return 0.85;
-    if (value >= 90 && value <= 100) return 0.94;
-    return NaN; 
-  };
+    const matchingRange = ranges.find(range => value >= range.min && value < range.max);
+    return matchingRange ? matchingRange.result : NaN;
+};
 
 export default function InStationLoad(towns){
     if (!Array.isArray(towns)) {

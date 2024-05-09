@@ -12,7 +12,7 @@ const NetworkForm = ({ onSubmit }) => {
   const [towns, setTowns] = useRecoilState(townsState);
 
   useEffect(() => {
-    localStorage.setItem('TownsState', JSON.stringify(towns));
+    /* localStorage.setItem('TownsState', JSON.stringify(towns)); */
     console.log('Updated towns:', towns);
   }, [towns]);
 
@@ -46,6 +46,7 @@ const NetworkForm = ({ onSubmit }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    localStorage.setItem('TownsState', JSON.stringify(towns));
     //onSubmit(towns);
   };
 
