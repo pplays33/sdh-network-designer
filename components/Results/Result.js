@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { townsState, LongDistanceStationLoadState, TotalLoadFromSubscribersOfOneStationState, StationCommunicationCoefficientState, InStationLoadResState, TotalOutgoingLoadFromEachState } from "../../src/app/State/store";
 import LongDistanceStationLoad from '../../utils/calc/LongDistanceStationLoad';
@@ -16,6 +16,7 @@ export default function Result({onSubmit}) {
     const [stMsgCoef, setStMsgCoef] = useRecoilState(StationCommunicationCoefficientState);
     const [inStationLoadRes, setInStationLoadRes] = useRecoilState(InStationLoadResState);
     const [totalOutgoingLoadFromEach, setTotalOutgoingLoadFromEach] = useRecoilState(TotalOutgoingLoadFromEachState);
+    const [resStatus, setResStatus] = useState(0);
 
     useEffect(() => {
         const loadedData = JSON.parse(localStorage.getItem('TownsState') || '{}');
@@ -32,8 +33,16 @@ export default function Result({onSubmit}) {
 
     useEffect(() => {
         setTotalOutgoingLoadFromEach(TotalOutgoingLoadFromEach(totalLoadFromSub, inStationLoadRes, loadStationResult));
+        setResStatus(1);
     }, [inStationLoadRes]);
 
+    useEffect(() => {
+        localStorage.setItem('totalOutgoingLoad', JSON.stringify(totalOutgoingLoadFromEach));
+        localStorage.setItem('longDistanceLoad', JSON.stringify(loadStationResult));
+        setResStatus(0);
+    }, [resStatus]);
+
+    
     return (
         <div className={styles.container}>
             <div className={styles.column}>

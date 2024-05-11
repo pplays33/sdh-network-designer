@@ -1,70 +1,45 @@
 'use client'
+import dynamic from 'next/dynamic';
+import React, {useEffect, useState} from "react";
+import RadarLoad from "./RadarLoad";
+import TotalLoadFromSubChart from "./TotalLoadFromSubChart"; 
+import TownsBoard from "./TownsBoard";
 
-import React from "react";
-import {
-  Radar,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-} from "recharts";
+import styles from './Dashboard.module.css';
 
-const data = [
-  {
-    subject: "Math",
-    A: 120,
-    fullMark: 150,
-  },
-  {
-    subject: "Chinese",
-    A: 98,
-    fullMark: 150,
-  },
-  {
-    subject: "English",
-    A: 86,
-    fullMark: 150,
-  },
-  {
-    subject: "Geography",
-    A: 99,
-    fullMark: 150,
-  },
-  {
-    subject: "Physics",
-    A: 85,
-    fullMark: 150,
-  },
-  {
-    subject: "History",
-    A: 65,
-    fullMark: 150,
-  },
-];
 
 
 const Dashboard = () => {
+  const [totalOutputLoad, setTotalOutputLoad] = useState([]);
+  const [longDistanceLoad, setLongDistanceLoad] = useState([]);
+  const [towns, setTowns] = useState([]);
+
+  useEffect(() => {
+    const TotalOutputLoad = JSON.parse(localStorage.getItem('totalOutgoingLoad') || '{}');
+    const LongDistanceLoad = JSON.parse(localStorage.getItem('longDistanceLoad') || '{}');
+    setLongDistanceLoad(LongDistanceLoad);
+    setTotalOutputLoad(TotalOutputLoad.map(item => ({
+      ...item,
+      fullMark: 250
+    })));
+    const townsLoaded = JSON.parse(localStorage.getItem('TownsState') || '{}');
+    setTowns(townsLoaded);
+  }, []);
+
     return (
-        <RadarChart
-            cx={300}
-            cy={250}
-            outerRadius={150}
-            width={500}
-            height={500}
-            data={data}
-        >
-            <PolarGrid />
-            <PolarAngleAxis dataKey="subject" />
-            <PolarRadiusAxis />
-            <Radar
-                name="Mike"
-                dataKey="A"
-                stroke="#8884d8"
-                fill="#8884d8"
-                fillOpacity={0.6}
-            />
-        </RadarChart>
+      <div className={styles.container}>
+        <h2 style={{ marginRight: '10px' }}>Визуальное представление <span>-&gt;</span> </h2>
+        <div className={styles.column}>
+            <RadarLoad data={totalOutputLoad}/>
+        </div>
+        <div className={styles.column}>
+          <TotalLoadFromSubChart data={longDistanceLoad}/>
+        </div>
+        <div className={styles.column}>
+          <TownsBoard data={towns}/>
+        </div>
+      </div>
     );
 };
 
-export default Dashboard;
+export default Dashboard
