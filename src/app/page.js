@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -109,6 +109,20 @@ export default function Home() {
             Результаты расчета
           </p>
         </a>
+
+        <Link
+          href="/outLoadPage"
+          className={styles.card}
+          rel="noopener noreferrer"
+        >
+          <h3>
+            Расчет исходящих нагрузок <span>-&gt;</span>
+          </h3>
+          <p>
+            Результаты расчета исходящих нагрузок "Из<span>-&gt;</span>В"
+          </p>
+        </Link>
+
       </div>
     </main>
   );
