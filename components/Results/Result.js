@@ -7,6 +7,7 @@ import TotalLoadFromSubscribersOfOneStation from '../../utils/calc/TotalLoadFrom
 import InStationLoad from '../../utils/calc/InStationLoad';
 import InStationLoadRes from '../../utils/calc/InStationLoadRes';
 import TotalOutgoingLoadFromEach from '../../utils/calc/TotalOutgoingLoadFromEach';
+import LoadInter from '../LoadInternet/LoadInternet';
 import styles from './Result.module.css';
 
 export default function Result({onSubmit}) {
@@ -105,6 +106,10 @@ export default function Result({onSubmit}) {
                         </li>
                     ))}
                 </ul>
+            </div>
+            <div className={styles.column}>
+                <h2 className={styles.header}>Нагрузка на сеть Интернет</h2>
+                < LoadInter/>
             </div>
         </div>
     );
