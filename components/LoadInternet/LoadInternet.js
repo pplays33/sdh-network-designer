@@ -12,7 +12,8 @@ const CalculateLoadsComponent = (citys) => {
 
     return citys.map(city => ({
         ...city,
-        updatedLoad: (city.population * 0.1 * 0.06).toFixed(2) + ' Эрл',
+        updatedLoad: parseFloat((city.population * 0.1 * 0.06).toFixed(2)),
+        updatedLoadStr: (city.population * 0.1 * 0.06).toFixed(2) + ' Эрл',
     }));
 }
 
@@ -22,7 +23,9 @@ export default function LoadInter(){
 
     useEffect(() => {
         const LoadTowns = JSON.parse(localStorage.getItem('TownsState') || '{}');
-        setLoadInternet(CalculateLoadsComponent(LoadTowns));
+        const res = CalculateLoadsComponent(LoadTowns);
+        setLoadInternet(res);
+        localStorage.setItem('loadInternet', JSON.stringify(res));
     },[]);
 
     return (
@@ -47,7 +50,7 @@ export default function LoadInter(){
                 <ListItem>
                   <ListItemText
                     primary={city.name + ':'}
-                    secondary={city.updatedLoad}
+                    secondary={city.updatedLoadStr}
                     primaryTypographyProps={{ style: { color: 'red' } }}
                   />
                 </ListItem>
