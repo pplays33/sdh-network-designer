@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './OutLoadOutTo.module.css';
 import FromToOutLoads from '../../utils/calc/FromToOutLoads';
+import FindMinimumChannels from '../../utils/calc/ErlangBUtil';
 
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
@@ -94,8 +95,12 @@ export default function OutLoadOutTo() {
         const OutLoadDatas = JSON.parse(localStorage.getItem('totalOutgoingLoad') || '{}');
         setOutLoads(OutLoadDatas);
         const result = FromToOutLoads(OutLoadDatas);
-        setFromToOutLoads(result);
-        localStorage.setItem('FromToOutLoads', JSON.stringify(result));
+        const NewResult = result.map((res, index) => ({
+            ...res,
+            channels: FindMinimumChannels(res.load ,0.01),
+        }));
+        setFromToOutLoads(NewResult);
+        localStorage.setItem('FromToOutLoads', JSON.stringify(NewResult));
     }, []);
 
 
@@ -120,13 +125,14 @@ export default function OutLoadOutTo() {
                 height: '100vh' // Обеспечивает занятие всей высоты видимой области окна браузера
             }}
         >
-            <TableContainer component={Paper} sx={{ maxWidth: 520, width: '100%', overflow: 'scroll' }}>
+            <TableContainer component={Paper} sx={{ maxWidth: 520, width: '100%', }}>
                 <Table sx={{ minWidth: 300 }} aria-label="custom pagination table">
                     <TableHead>
                         <TableRow>
                             <TableCell>От станции</TableCell>
                             <TableCell align="right">К станции</TableCell>
                             <TableCell align="right">Нагрузка&nbsp;(Эрл)</TableCell>
+                            <TableCell align="right">кол-во каналов:</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -144,6 +150,9 @@ export default function OutLoadOutTo() {
                                 <TableCell style={{ width: 160 }} align="right">
                                     {row.load}
                                 </TableCell>
+                                <TableCell style={{ width: 160 }} align="right">
+                                    {row.channels}
+                                </TableCell>
                             </TableRow>
                         ))}
                         {emptyRows > 0 && (
@@ -156,14 +165,14 @@ export default function OutLoadOutTo() {
                         <TableRow>
                             <TablePagination
                                 rowsPerPageOptions={[10, 25, { label: 'All', value: -1 }]}
-                                colSpan={3}
+                                colSpan={4}
                                 count={fromToOutLoads.length}
                                 rowsPerPage={rowsPerPage}
                                 page={page}
                                 slotProps={{
                                     select: {
                                         inputProps: {
-                                            'aria-label': 'rows per page',
+                                            'aria-label': 'строк на странице',
                                         },
                                         native: true,
                                     },

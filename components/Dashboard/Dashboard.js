@@ -22,7 +22,7 @@ const Dashboard = () => {
       ...item,
       fullMark: 250
     })));
-    const townsLoaded = JSON.parse(localStorage.getItem('TownsState') || '{}');
+    const townsLoaded = JSON.parse(localStorage.getItem('loadInternet') || '{}');
     setTowns(townsLoaded);
   }, []);
 

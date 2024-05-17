@@ -82,7 +82,7 @@ const Header = () => {
       <StyledHeader>
         <div className="nav_logo">
           <Link href="/" className="nav-logo-link">
-            SDHprog by C.V
+            SDHprog
           </Link>
         </div>
 

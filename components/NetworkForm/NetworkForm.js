@@ -52,7 +52,7 @@ const NetworkForm = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.formContainer}>
-      <h2 className={styles.formTitle}>Конфигуратор внутризоновой сети SDH</h2>
+      <h2 className={styles.formTitle}>Конфигурация внутризоновой сети SDH</h2>
       <div className={styles.inputRow}>
         <label htmlFor="townCount" className={styles.label}>
           Количество населённых пунктов:

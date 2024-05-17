@@ -6,9 +6,9 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <p>
+        {/* <p>
           Проектирование внутризоновой сети SDH
-        </p>
+        </p> */}
         <div>
           <a
             href="https://github.com/"
@@ -78,7 +78,7 @@ export default function Home() {
             Населенные пункты <span>-&gt;</span>
           </h2>
           <p>
-            Выбор кол-ва населенных пунктов 
+            Выбор кол-ва населенных пунктов и узлов 
           </p>
         </a>
 
@@ -89,10 +89,10 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2>
-            Схема <span>-&gt;</span>
+            Расчет кол-ва каналов <span>-&gt;</span>
           </h2>
           <p>
-            Схема проектируемой сети
+            Калькулятор для расчета количества каналов по заданной нагрузке и задержке
           </p>
         </a>
 

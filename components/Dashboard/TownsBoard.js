@@ -25,7 +25,7 @@ const TownsBoard = ({data}) => {
       >
         <XAxis dataKey="name" />
         <Tooltip />
-        <Area type="monotone" dataKey="population" stroke="#000000" fill="#8884d8" />
+        <Area type="monotone" dataKey="updatedLoad" stroke="#000000" fill="#8884d8" />
       </AreaChart>
     );
 }

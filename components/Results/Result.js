@@ -57,7 +57,7 @@ export default function Result({onSubmit}) {
                 </ul>
             </div>
             <div className={styles.column}>
-                <h2 className={styles.header}>Города </h2>
+                <h2 className={styles.header}>Узлы </h2>
                 <ul className={styles.list}>
                     {towns.map((town, index) => (
                         <li key={index} className={styles.listItem}>
