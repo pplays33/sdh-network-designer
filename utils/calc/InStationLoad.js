@@ -23,7 +23,7 @@ const ranges = [
 
 const calculateResult = (value) => {
     const matchingRange = ranges.find(range => value >= range.min && value < range.max);
-    return matchingRange ? matchingRange.result : NaN;
+    return matchingRange ? matchingRange.result : 0.17;
 };
 
 export default function InStationLoad(towns){

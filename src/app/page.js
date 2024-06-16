@@ -1,17 +1,17 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-
+import Link from 'next/link';
 
 export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <p>
+        {/* <p>
           Проектирование внутризоновой сети SDH
-        </p>
+        </p> */}
         <div>
           <a
-            href="https://github.com/"
+            href="https://github.com/pplays33/sdh-network-designer"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -32,74 +32,68 @@ export default function Home() {
       </div>
 
       <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+        <Link
+          href="/calculationForm"
           className={styles.card}
-          target="_blank"
           rel="noopener noreferrer"
         >
           <h2>
             Параметры расчета <span>-&gt;</span>
           </h2>
           <p>Ввода параметров населенных пунктов и расчётных показателей сети</p>
-        </a>
+        </Link>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+        <Link
+          href="/cableForm"
           className={styles.card}
-          target="_blank"
           rel="noopener noreferrer"
         >
           <h2>
             Параметры кабеля <span>-&gt;</span>
           </h2>
           <p>Форма для ввода параметров кабеля.</p>
-        </a>
+        </Link>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+        <Link
+          href="/networkForm"
           className={styles.card}
-          target="_blank"
           rel="noopener noreferrer"
         >
           <h2>
             Кол-во абонентов <span>-&gt;</span>
           </h2>
           <p>Численность населения» и «Расстояние»</p>
-        </a>
+        </Link>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+        <Link
+          href="/capitalCoast"
           className={styles.card}
-          target="_blank"
           rel="noopener noreferrer"
         >
           <h2>
-            Населенные пункты <span>-&gt;</span>
+            Суммарные затраты <span>-&gt;</span>
           </h2>
           <p>
-            Выбор кол-ва населенных пунктов 
+            Состав оборудования и их стоимость для расчитываемой сети 
           </p>
-        </a>
+        </Link>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+        <Link
+          href="/calcPage"
           className={styles.card}
-          target="_blank"
           rel="noopener noreferrer"
         >
           <h2>
-            Схема <span>-&gt;</span>
+            Расчет кол-ва каналов <span>-&gt;</span>
           </h2>
           <p>
-            Схема проектируемой сети
+            Калькулятор для расчета количества каналов по заданной нагрузке и задержке
           </p>
-        </a>
+        </Link>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
+        <Link
+          href="/resultPage"
           className={styles.card}
-          target="_blank"
           rel="noopener noreferrer"
         >
           <h2>
@@ -108,7 +102,21 @@ export default function Home() {
           <p>
             Результаты расчета
           </p>
-        </a>
+        </Link>
+
+        <Link
+          href="/outLoadPage"
+          className={styles.card}
+          rel="noopener noreferrer"
+        >
+          <h3>
+            Расчет исходящих нагрузок <span>-&gt;</span>
+          </h3>
+          <p>
+            Результаты расчета исходящих нагрузок "Из<span>-&gt;</span>В"
+          </p>
+        </Link>
+
       </div>
     </main>
   );

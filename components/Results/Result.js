@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { townsState, LongDistanceStationLoadState, TotalLoadFromSubscribersOfOneStationState, StationCommunicationCoefficientState, InStationLoadResState, TotalOutgoingLoadFromEachState } from "../../src/app/State/store";
 import LongDistanceStationLoad from '../../utils/calc/LongDistanceStationLoad';
@@ -7,6 +7,7 @@ import TotalLoadFromSubscribersOfOneStation from '../../utils/calc/TotalLoadFrom
 import InStationLoad from '../../utils/calc/InStationLoad';
 import InStationLoadRes from '../../utils/calc/InStationLoadRes';
 import TotalOutgoingLoadFromEach from '../../utils/calc/TotalOutgoingLoadFromEach';
+import LoadInter from '../LoadInternet/LoadInternet';
 import styles from './Result.module.css';
 
 export default function Result({onSubmit}) {
@@ -16,6 +17,7 @@ export default function Result({onSubmit}) {
     const [stMsgCoef, setStMsgCoef] = useRecoilState(StationCommunicationCoefficientState);
     const [inStationLoadRes, setInStationLoadRes] = useRecoilState(InStationLoadResState);
     const [totalOutgoingLoadFromEach, setTotalOutgoingLoadFromEach] = useRecoilState(TotalOutgoingLoadFromEachState);
+    const [resStatus, setResStatus] = useState(0);
 
     useEffect(() => {
         const loadedData = JSON.parse(localStorage.getItem('TownsState') || '{}');
@@ -32,8 +34,16 @@ export default function Result({onSubmit}) {
 
     useEffect(() => {
         setTotalOutgoingLoadFromEach(TotalOutgoingLoadFromEach(totalLoadFromSub, inStationLoadRes, loadStationResult));
+        setResStatus(1);
     }, [inStationLoadRes]);
 
+    useEffect(() => {
+        localStorage.setItem('totalOutgoingLoad', JSON.stringify(totalOutgoingLoadFromEach));
+        localStorage.setItem('longDistanceLoad', JSON.stringify(loadStationResult));
+        setResStatus(0);
+    }, [resStatus]);
+
+    
     return (
         <div className={styles.container}>
             <div className={styles.column}>
@@ -47,7 +57,7 @@ export default function Result({onSubmit}) {
                 </ul>
             </div>
             <div className={styles.column}>
-                <h2 className={styles.header}>Города </h2>
+                <h2 className={styles.header}>Узлы </h2>
                 <ul className={styles.list}>
                     {towns.map((town, index) => (
                         <li key={index} className={styles.listItem}>
@@ -96,6 +106,10 @@ export default function Result({onSubmit}) {
                         </li>
                     ))}
                 </ul>
+            </div>
+            <div className={styles.column}>
+                <h2 className={styles.header}>Нагрузка на сеть Интернет</h2>
+                < LoadInter/>
             </div>
         </div>
     );

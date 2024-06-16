@@ -2,7 +2,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { RecoilRoot } from 'recoil';
+import Header from "../../components/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,10 @@ export default function RootLayout({ children }) {
     <RecoilRoot>
       <html lang="en">
         <body className={inter.className}>
-          {children}
+          <AppRouterCacheProvider>
+            <Header />
+            {children}
+          </AppRouterCacheProvider>
         </body>
       </html>
     </RecoilRoot>
